@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view  wx:for="{{userID}}" >
+    {{item.id}}  {{item.name}}
+  </view>
+
+  <view>
+  <button bindtap='bindtest'>test</button>
+  </view>
+
+  <input name="uname" bindinput="usernameInput" placeholder="用户名" auto-focus/>
+
+</view>
