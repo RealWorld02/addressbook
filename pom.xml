@@ -4,7 +4,7 @@
 	<artifactId>addressbook</artifactId>
 	<packaging>war</packaging>
 	<name>MVC实例</name>
-	
+
 	<!-- 项目属性 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -273,12 +273,22 @@
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
-				<version>1.2.6</version>
+				<version>1.2.16</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>3.3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.xfire</groupId>
+				<artifactId>xfire-core</artifactId>
+				<version>1.2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-jdk16</artifactId>
+				<version>1.46</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -371,10 +381,8 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
 		</dependency>
-<!-- 		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-		</dependency> -->
+		<!-- <dependency> <groupId>taglibs</groupId> <artifactId>standard</artifactId> 
+			</dependency> -->
 		<!-- WEB end -->
 
 		<!-- SPRING end -->
@@ -456,6 +464,18 @@
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.xfire</groupId>
+			<artifactId>xfire-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk16</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

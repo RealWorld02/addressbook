@@ -6,6 +6,11 @@ Page({
   data: {
    
   },
+
+  onLoad:function(){
+    
+
+  },
   usernameInput:function(e){
     this.setData({
       userName: e.detail.value
