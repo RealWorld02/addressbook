@@ -23,17 +23,20 @@ App({
             success(setRes) {
               // 判断是否已授权
               if (!setRes.authSetting['scope.userInfo']) {
+                
                 // 授权访问
                 wx.authorize({
+                  
                   scope: 'scope.userInfo',
                   success() {
+                    
                     //获取用户信息
                     wx.getUserInfo({
                       lang: "zh_CN",
                       success: function (userRes) {
                         //发起网络请求
                         wx.request({
-                          url: 'http://localhost:8080/addressbook/wxlogin',
+                          url: 'http://172.22.126.3:8080/addressbook/wxlogin',
                           data: {
                             code: res.code,
                             encryptedData: userRes.encryptedData,
@@ -42,27 +45,27 @@ App({
                           header: {
                             "Content-Type": "application/x-www-form-urlencoded"  
                           },
-                          method: 'POST',
+                          method: 'GET',
                           //服务端的回掉
                           success: function (result) {
-                            var data = result.data.result;
-                            //data.expireTime = nowDate + EXPIRETIME;
-                            wx.setStorageSync("userInfo", data);
-                           // userInfo = data;
+                            wx.setStorageSync("openId", result.data);
                           }
                         })
                       }
                     })
+                    
                   }
+                 
                 })
               } else {
                 //获取用户信息
+               
                 wx.getUserInfo({
                   lang: "zh_CN",
                   success: function (userRes) {
                     //发起网络请求
                     wx.request({
-                      url: 'http://localhost:8080/addressbook/wxlogin',
+                      url: 'http://172.22.126.3:8080/addressbook/wxlogin',
                       data: {
                         code: res.code,
                         encryptedData: userRes.encryptedData,
@@ -71,12 +74,9 @@ App({
                       header: {
                         "Content-Type": "application/x-www-form-urlencoded"  
                       },
-                      method: 'POST',
+                      method: 'GET',
                       success: function (result) {
-                        var data = result.data.result;
-                        //data.expireTime = nowDate + EXPIRETIME;
-                        wx.setStorageSync("userInfo", data);
-                       // userInfo = data;
+                        wx.setStorageSync("openId", result.data);
                       }
                     })
                   }

@@ -2,8 +2,6 @@ package com.shay.addressbook.controller;
 
 import java.security.AlgorithmParameters;
 import java.security.Security;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -28,8 +26,8 @@ import com.shay.addressbook.util.LoginUtil;
 public class LoginController {
 	private static Logger log = Logger.getLogger(LoginController.class);
 
-	@RequestMapping(value = "/wxlogin", method = RequestMethod.POST)
-	public JSONObject login(String code, String encryptedData, String iv) {
+	@RequestMapping(value = "/wxlogin", method = RequestMethod.GET)
+	public String login(String code, String encryptedData, String iv) {
 		String session_key = null;
 		String token = LoginUtil.getWebAccess(code);
 		String rec = LoginUtil.httpGet(token);
@@ -60,8 +58,9 @@ public class LoginController {
 			byte[] resultByte = cipher.doFinal(dataByte);
 			if (null != resultByte && resultByte.length > 0) {
 				String result = new String(resultByte, "UTF-8");
-				System.out.println(result);
-				return JSON.parseObject(result);
+				JSONObject userInfo = JSON.parseObject(result);
+				log.info(result);
+				return userInfo.getString("openId");
 			}
 		}
 		catch (Exception e) {

@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-   
+    
   },
 
   onLoad:function(){
@@ -19,6 +19,7 @@ Page({
   //事件处理函数
   bindtest: function () {
     var that = this; // 这个地方非常重要，重置data{}里数据时候setData方法的this应为以及函数的this, 如果在下方的sucess直接写this就变成了wx.request()的this了
+    wx.setStorageSync('key', 'mapppp');
     wx.request({
       url: 'http://localhost:8080/addressbook/sample/',
       data: {
@@ -31,6 +32,9 @@ Page({
       success: function (res) {
         that.setData({
            userID: res.data,
+        })
+        wx.navigateTo({
+          url: '../map/map'
         })
       },
       fail: function (res) {

@@ -8,7 +8,7 @@
   <view>
   <button bindtap='bindtest'>test</button>
   </view>
-
+<view>{{mapp}}</view>
   <input name="uname" bindinput="usernameInput" placeholder="用户名" auto-focus/>
 
 </view>
