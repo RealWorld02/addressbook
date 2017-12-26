@@ -107,5 +107,15 @@
 
 		<!-- 配置监控统计拦截的filters -->
 		<property name="filters" value="stat" />
+		
+				<property name="proxyFilters">
+			<list>
+				<ref bean="log-filter" />
+			</list>
+		</property>
 	</bean>
+	
+	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
+        <property name="statementExecutableSqlLogEnable" value="true" />
+    </bean>
 </beans>
