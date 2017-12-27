@@ -1,14 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-
-  <view  wx:for="{{userID}}" >
-    {{item.id}}  {{item.name}}
-  </view>
-
-  <view>
-  <button bindtap='bindtest'>test</button>
-  </view>
-<view>{{mapp}}</view>
-  <input name="uname" bindinput="usernameInput" placeholder="用户名" auto-focus/>
-
+    <block wx:if="{{resultData[k].address != 'undefined'}}">
+      <text class="address" bindtap="bindLocation" data-address="{{resultData[k].address}}" data-name="{{resultData[k].name}}" data-longitude="{{resultData[k].longitude}}" data-latitude="{{resultData[k].latitude}}">{{resultData[k].addressAll}}</text>
+    </block>
 </view>

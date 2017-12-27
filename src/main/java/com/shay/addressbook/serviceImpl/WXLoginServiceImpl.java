@@ -73,8 +73,10 @@ public class WXLoginServiceImpl implements WXLoginService{
 			user.setProvince(userInfo.getString("province"));
 			user.setCountry(userInfo.getString("country"));
 			user.setAvatarUrl(userInfo.getString("avatarUrl"));
-			if (wxLoginDAO.checkUser(user) < 1){
+			if (wxLoginDAO.checkUser(user) == null){ //user不存在则保存，存在则更新。当用户修改头像时avatarUrl会改变。
 				wxLoginDAO.saveUser(user);
+			} else{
+				wxLoginDAO.updateUser(user);
 			}
 			return userInfo.getString("openId");
 		}

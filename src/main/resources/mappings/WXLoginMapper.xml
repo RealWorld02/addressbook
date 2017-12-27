@@ -12,15 +12,17 @@
     <result column="country" jdbcType="VARCHAR" property="country" />
     <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl" />
   </resultMap>
+  
   <select id="checkUser" resultMap="BaseResultMap" parameterType="com.shay.addressbook.entity.User">
-    select count(openId) from user where openId = #{openId}
+    select * from user where openId = #{openId}
   </select>
   
   <insert id="saveUser" parameterType="com.shay.addressbook.entity.User">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     	INSERT into  user(openId,nickName,gender,language, city, province,country, avatarUrl)
 		VALUES(#{openId},#{nickName},#{gender},#{language}, #{city}, #{province},#{country}, #{avatarUrl});
   </insert>
+  
+  <update id="updateUser" parameterType="com.shay.addressbook.entity.User" >
+  		UPDATE user SET nickName = #{nickName} ,gender=#{gender}, language=#{language},city=#{city},province=#{province},country=#{country},avatarUrl=#{avatarUrl} WHERE openId = #{openId}
+  </update>
 </mapper>

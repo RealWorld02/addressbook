@@ -7,6 +7,7 @@ import com.shay.addressbook.entity.User;
 @Repository
 public interface WXLoginDAO {
 
-	Integer checkUser(User user);
+	User checkUser(User user);
 	void saveUser(User user);
+	void updateUser(User user);
 }
