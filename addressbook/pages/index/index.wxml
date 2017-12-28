@@ -1,6 +1,4 @@
 <!--index.wxml-->
 <view class="container">
-    <block wx:if="{{resultData[k].address != 'undefined'}}">
-      <text class="address" bindtap="bindLocation" data-address="{{resultData[k].address}}" data-name="{{resultData[k].name}}" data-longitude="{{resultData[k].longitude}}" data-latitude="{{resultData[k].latitude}}">{{resultData[k].addressAll}}</text>
-    </block>
+
 </view>

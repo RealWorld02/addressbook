@@ -1,13 +1,37 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/search/search",
+    "pages/user/user",
     "pages/logs/logs",
-    "pages/map/map"
+    "pages/userMap/userMap"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#0066FF",
+    "navigationBarTitleText": "地图通讯录",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#eeeeee",
+    "enablePullDownRefresh":"ture"
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#0066FF",
+    "borderStyle":"black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      { 
+        "pagePath": "pages/index/index",
+        "text": "index"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "search"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "user"
+      }
+    ]
   }
 }
