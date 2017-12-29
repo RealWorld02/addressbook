@@ -16,18 +16,18 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.shay.addressbook.DAO.WXLoginDAO;
+import com.shay.addressbook.DAO.UserDAO;
 import com.shay.addressbook.entity.User;
-import com.shay.addressbook.service.WXLoginService;
+import com.shay.addressbook.service.UserService;
 import com.shay.addressbook.util.LoginUtil;
 
 @Service
-public class WXLoginServiceImpl implements WXLoginService{
+public class UserServiceImpl implements UserService{
 	
 	@Autowired
-	private WXLoginDAO wxLoginDAO;
+	private UserDAO userDAO;
 	
-	private static Logger log = Logger.getLogger(WXLoginServiceImpl.class);
+	private static Logger log = Logger.getLogger(UserServiceImpl.class);
 	
 	@Override
 	public String saveUser(String code, String encryptedData, String iv) {
@@ -73,10 +73,10 @@ public class WXLoginServiceImpl implements WXLoginService{
 			user.setProvince(userInfo.getString("province"));
 			user.setCountry(userInfo.getString("country"));
 			user.setAvatarUrl(userInfo.getString("avatarUrl"));
-			if (wxLoginDAO.checkUser(user) == null){ //user不存在则保存，存在则更新。当用户修改头像时avatarUrl会改变。
-				wxLoginDAO.saveUser(user);
+			if (userDAO.getUserInfo(user) == null){ //user不存在则保存，存在则更新。当用户修改头像时avatarUrl会改变。
+				userDAO.saveUser(user);
 			} else{
-				wxLoginDAO.updateUser(user);
+				userDAO.updateUser(user);
 			}
 			return userInfo.getString("openId");
 		}
@@ -84,5 +84,17 @@ public class WXLoginServiceImpl implements WXLoginService{
 			log.error(e.getMessage(), e);
 		}
 		return null;
+	}
+
+	@Override
+	public User getUserInfo(User user) {
+		User userInfo = userDAO.getUserInfo(user);
+		return userInfo;
+	}
+
+	@Override
+	public String saveAddress(User user) {
+		userDAO.saveAddress(user);
+		return "success";
 	}
 }

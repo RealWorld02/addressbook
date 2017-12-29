@@ -11,6 +11,14 @@ public class User {
 	private String province;
 	private String country;
 	private String avatarUrl;
+	private String addCountry;
+	private String addProvince;
+	private String addCity;
+	private String addDistrict;
+	private String latitude;
+	private String longitude;
+	private String detailAddName;
+	private String detailAddress;
 
 	public Integer getId() {
 		return id;
@@ -84,9 +92,74 @@ public class User {
 		this.avatarUrl = avatarUrl;
 	}
 
+	public String getAddCountry() {
+		return addCountry;
+	}
+
+	public void setAddCountry(String addCountry) {
+		this.addCountry = addCountry;
+	}
+
+	public String getAddProvince() {
+		return addProvince;
+	}
+
+	public void setAddProvince(String addProvince) {
+		this.addProvince = addProvince;
+	}
+
+	public String getAddCity() {
+		return addCity;
+	}
+
+	public void setAddCity(String addCity) {
+		this.addCity = addCity;
+	}
+
+	public String getAddDistrict() {
+		return addDistrict;
+	}
+
+	public void setAddDistrict(String addDistrict) {
+		this.addDistrict = addDistrict;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getDetailAddName() {
+		return detailAddName;
+	}
+
+	public void setDetailAddName(String detailAddName) {
+		this.detailAddName = detailAddName;
+	}
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", openId=" + openId + ", nickName=" + nickName + ", gender=" + gender + ", language=" + language + ", city=" + city + ", province=" + province + ", country="
-				+ country + ", avatarUrl=" + avatarUrl + "]";
+				+ country + ", avatarUrl=" + avatarUrl + ", addCountry=" + addCountry + ", addProvince=" + addProvince + ", addCity=" + addCity + ", addDistrict=" + addDistrict + ", latitude="
+				+ latitude + ", longitude=" + longitude + ", detailAddName=" + detailAddName + ", detailAddress=" + detailAddress + "]";
 	}
 }

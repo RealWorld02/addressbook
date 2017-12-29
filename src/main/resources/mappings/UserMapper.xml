@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shay.addressbook.DAO.WXLoginDAO">
+<mapper namespace="com.shay.addressbook.DAO.UserDAO">
   <resultMap id="BaseResultMap" type="com.shay.addressbook.entity.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="openId" jdbcType="VARCHAR" property="openId" />
@@ -11,9 +11,18 @@
     <result column="province" jdbcType="VARCHAR" property="province" />
     <result column="country" jdbcType="VARCHAR" property="country" />
     <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl" />
+    <result column="addCountry" jdbcType="VARCHAR" property="addCountry" />
+    <result column="addProvince" jdbcType="VARCHAR" property="addProvince" />
+    <result column="addCity" jdbcType="VARCHAR" property="addCity" />
+    <result column="addDistrict" jdbcType="VARCHAR" property="addDistrict" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="detailAddName" jdbcType="VARCHAR" property="detailAddName" />
+    <result column="detailAddress" jdbcType="VARCHAR" property="detailAddress" />
+                
   </resultMap>
   
-  <select id="checkUser" resultMap="BaseResultMap" parameterType="com.shay.addressbook.entity.User">
+  <select id="getUserInfo" resultMap="BaseResultMap" parameterType="com.shay.addressbook.entity.User">
     select * from user where openId = #{openId}
   </select>
   
@@ -25,4 +34,9 @@
   <update id="updateUser" parameterType="com.shay.addressbook.entity.User" >
   		UPDATE user SET nickName = #{nickName} ,gender=#{gender}, language=#{language},city=#{city},province=#{province},country=#{country},avatarUrl=#{avatarUrl} WHERE openId = #{openId}
   </update>
+  
+  <update id="saveAddress" parameterType="com.shay.addressbook.entity.User" >
+  		UPDATE user SET addCountry = #{addCountry} ,addProvince=#{addProvince}, addCity=#{addCity},addDistrict=#{addDistrict},latitude=#{latitude},longitude=#{longitude},detailAddName=#{detailAddName},detailAddress=#{detailAddress} WHERE openId = #{openId}
+  </update>
+  
 </mapper>
